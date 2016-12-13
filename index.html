@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Paweł Zagrobelny">
+    <meta name="license" content="">
+    <title>QuizMaker</title>
+
+    <!-- Bootstrap -->
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body ng-app="Quizer" id="Quizer">
+
+        <div id="generateModal" class="modal fade"  role="dialog">
+          <div class="modal-dialog">
+
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Generate...</h4>
+                </div>
+                <div class="modal-body">
+                  <p></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        <section ng-controller="QuizCreatorController" id="main">
+              <div class="options">
+                  What do you want to do?
+                  <a class="btn btn-info btn-sm" ng-click="addQuestion()">
+                      <span class="glyphicon glyphicon-plus"></span> Add question
+                  </a>
+                  or
+                  <a ng-click="generate()" class="btn btn-success btn-sm">
+                      <span class="glyphicon glyphicon-ok"></span> Generate quiz!
+                  </a>
+              </div>
+              <h1>Quizer</h1>
+              <hr>
+              Quiz title: <input type="text" ng-model="quiz.title" class="form-control quiz" placeholder="Type quiz title">
+              Author: <input type="text" ng-model="quiz.author" class="form-control quiz" placeholder="Type author name">
+              <hr>
+              <div class="alert alert-info" ng-hide="Quests.length > 0">
+                  <strong>No questions</strong> Don't hestitate, just add one
+              </div>
+              <section id="questions">
+              <ul>
+                  <li class="question" ng-repeat="question in Quests">
+                      <header>
+                          <span class="nr">{{ $index + 1 }}. </span><input class="title" ng-class="{ 'error': question.title.length <= 0 }"placeholder="Type your question..." ng-model="question.title"  type="text">
+                          <a ng-click="removeQuestion(question)" href="#" class="btn btn-danger btn-sm remove-question">
+                            <span class="glyphicon glyphicon-trash" ng-click="removeQuestion(question)"></span> Remove
+                          </a>
+                      </header>
+                      <hr>
+                      <div class="alert alert-warning" ng-hide="question.answers.length > 0">
+                          <strong>No answers</strong> Don't hestitate, just add one
+                      </div>
+                      <ul ng-click="countA(question.answers)" ng-show="question.answers.length > 0">
+                        <div class="alert alert-danger" ng-show="(question.answers | filter:{ valid: true}).length <= 0">
+                            <strong>No answers</strong> At least one answer should be valid!
+                        </div>
+                        <li ng-repeat="answer in question.answers">
+                              <input type="checkbox" ng-model="answer.valid" ng-true-value="true" ng-false-value="false">
+                              <input ng-class="{ 'error': answer.text.length <= 0 }" type="text" placeholder="Type answer..." class="form-control" ng-model="answer.text">
+                              <a ng-click="removeAnswer(question, answer)" class="btn btn-warning btn-sm">
+                                  <span class="glyphicon glyphicon-remove"></span>
+                              </a>
+                        </li>
+                      </ul>
+                      <a ng-click="addAnswer(question)" class="btn btn-info btn-sm add-answer">
+                          <span class="glyphicon glyphicon-plus"></span> Add answer
+                      </a>
+                      <hr>
+                  </li>
+              </ul>
+            </section>
+        </section>
+  </body>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+
+    <!-- Insert this line above script imports  -->
+    <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
+    <!-- normal script imports etc  -->
+    <script src="vendor/jquery.min.js"></script>
+
+    <!-- Insert this line after script imports -->
+    <script>if (window.module) module = window.module;</script>
+
+    <!-- Angular vendor -->
+
+    <script src="vendor/bootstrap.min.js"></script>
+    <script src="vendor/angular.min.js"></script>
+    <script src="app.js"></script>
+
+  </body>
+</html>
