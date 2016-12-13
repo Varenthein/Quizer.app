@@ -1,2 +1,2 @@
 # Quizer.app
-Simple quiz making app.
+Just a simple quiz making app written in pure JavaScript.
