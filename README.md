@@ -4,7 +4,7 @@ Just a simple quiz making app written in pure JavaScript. I've made it exclusive
 Creator
 --
 
-Quiz creator is made in Angular.js. In order to use it, just copy the files to your server.�
+Quiz creator is made in Angular.js. In order to use it, just copy the files to your server.
 
 Embeding
 --
@@ -37,7 +37,7 @@ It looks like this:
 Warning
 --
  
- I'd be happy if you find this script useful. However, take a note that it was made purely for SofaSport.pl, so the quiz generation script use always adress http://sofasport... You can leave that and use SofaSport as CDN, but it's better to just change embed function a little. 
+ I'd be happy if you find this script useful. However, take a note that it was made purely for SofaSport.pl, so the quiz generation script uses always a link http://sofasport... You can leave that and use SofaSport as CDN, but it's better to just change embed function a little. 
  
  Just find thiss line...
  
@@ -47,12 +47,12 @@ jQuery(codeBox).text(`<!-- Quizer app block -->\n<div id="quizer-app-block"></di
 
 and make according changes.
 
-I think it can save you a lot frustration of kind "why my changes don't work?!". That's coul be a reason ;) So, pleae change this.
+I think it can save you a lot frustration of kind "why my changes don't work?!". That could be a reason ;) So, please change this.
 
 Restrictions
 --
 
-First thing - I'm not sure if script work okay, when there are embeded more than once quzier.app quizes on the website. I have no idea as I was creating it make it work in one quiz per page manner. Maybe it works, maybe not. I think I'll check it myself in near future ;)
+First thing - I doubt if script works okay, when there are embeded more than once quzier.app quizes on the website. I created it to make it work in one quiz per page manner. I'll probably extend script functionality later.
 
 Second - creator is written in ES6, so there may be problems for poeple who think IE8 is a browser ;) Embed script uses old-style JS, so don't worry.
 
