@@ -1,4 +1,4 @@
-/* IN CASE OF OLDER BROWSERS */
+/* For older browsers */
 
 if (!Array.prototype.forEach)
 {
@@ -17,7 +17,7 @@ if (!Array.prototype.forEach)
   };
 }
 
-//FADE IN, FADEOUT function
+//FADE IN, FADE OUT functions
 
 Element.prototype.fadeIn = function(callbackF) {
 
@@ -50,15 +50,18 @@ var Quizer = function(questions) {
 
 };
 
+//start quiz method
 Quizer.prototype.startQuiz = function() {
 
-    //hide title page and show FIRST question
+    //hide title page and show the first question
     findDOM('#quizer_title_page').fadeOut(function() {
       findDOM('.question').fadeIn();
     });
 
 };
 
+
+//show next question method
 Quizer.prototype.nextQuestion = function(now) {
 
    if(findAll('.question')[now+1] !== undefined) { //if there is another question
@@ -66,10 +69,12 @@ Quizer.prototype.nextQuestion = function(now) {
      //hide present question and show another
      findAll('.question')[now].fadeOut(function() {
         findAll('.question')[now+1].fadeIn();
-     }); } else { //there aren't more questions
+     }); 
+     } 
+     else { //there are no more questions
 
       this.countResult(); //count result
-      //hide present question and show final slide
+      //hide present question and show the final slide
       findAll('.question')[now].fadeOut(function() {
         findAll('.result')[0].fadeIn();
       });
@@ -81,7 +86,7 @@ Quizer.prototype.nextQuestion = function(now) {
 //Count result function
 Quizer.prototype.countResult = function() {
 
-    var result = quizer_questions.reduce(function(sum, quest,i) {
+    var result = quizer_questions.reduce(function(sum, quest, i) {
 
         return sum + ((quest.answers.reduce(function(result, answer) {
             return (answer.valid === answer.checked) ? result+1 : result; //if at least one choice doesn't match required answer, count zero points
@@ -102,17 +107,17 @@ Quizer.prototype.init = function() {
 
       var button = document.createElement('BUTTON');
       button.id = "start_quiz_button";
-      button.className = 'btn btn-primary';
+      button.className = 'btn btn-primary'; //add bootstrap styling
       button.innerHTML = "Start the quiz";
       button.addEventListener("click", function() {
-            this.startQuiz();
+            this.startQuiz(); //add onClick event - startQuiz
       }.bind(this));
       html.appendChild(button);
 
       findDOM().appendChild(html); //append title page
 
       var self = this;
-      this.questions.forEach(function(question, i) {
+      this.questions.forEach(function(question, i) { //for each question create seperated slide
 
       //create question div
       var html = document.createElement('DIV');
@@ -158,7 +163,7 @@ Quizer.prototype.init = function() {
          answers[i].addEventListener("click", function() {
 
          var parent = questions[this.parentNode.ID.replace('quest_','')];
-         var item = parent.answers[this.id.replace('answer_','')]; //item is an answer here
+         var item = parent.answers[this.id.replace('answer_','')]; //item is the answer here
          item.checked = (item.checked == true) ? false : true;
          this.className = (item.checked == true) ? "answer checked" : "answer";
 
