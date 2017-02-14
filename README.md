@@ -39,7 +39,7 @@ Warning
  
  I'd be happy if you find this script useful. However, take a note that it was made purely for SofaSport.pl, so the quiz generation script uses always a link http://sofasport... You can leave that and use SofaSport as CDN, but it's better to just change embed function a little. 
  
- Just find thiss line...
+ Just find this line...
  
 ```javascript
 jQuery(codeBox).text(`<!-- Quizer app block -->\n<div id="quizer-app-block"></div>\n<script>var quizer_questions = ${JSON.stringify($scope.Quests)}\nvar quiz_info = ${JSON.stringify($scope.quiz)};</script>\n<link href="http://sofasport.pl/Tools/QuizMaker/styles/default.min.css" rel="stylesheet"/>\n<script src="http://sofasport.pl/Tools/QuizMaker/quizLoader.min.js"></script>\n<!-- Quizer app block end -->`);
