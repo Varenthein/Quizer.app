@@ -52,7 +52,7 @@ I think it can save you a lot frustration of kind "why my changes don't work?!".
 Restrictions
 --
 
-First thing - I doubt if script works okay, when there are embeded more than once quzier.app quizes on the website. I created it to make it work in one quiz per page manner. I'll probably extend script functionality later.
+First thing - I doubt if script works okay when there are embeded more than one quzier.app quizes on the website. I created it to make it work in one quiz per page manner. I'll probably extend script functionality later.
 
 Second - creator is written in ES6, so there may be problems for poeple who think IE8 is a browser ;) Embed script uses old-style JS, so don't worry.
 
